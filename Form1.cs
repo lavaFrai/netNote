@@ -14,6 +14,7 @@ namespace windows
     public partial class Form1 : Form
     {
         private string _path = "Null";
+        Encoding encoding = Encoding.UTF8;
 
         public Form1()
         {
@@ -50,7 +51,7 @@ namespace windows
                 {
                     path = openFileDialog.FileName;
                     _path = path;
-                    fileContent = File.ReadAllText(_path, Encoding.Unicode);
+                    fileContent = File.ReadAllText(_path, encoding);
                     textArea.Text = fileContent;
                 }
             }
@@ -66,7 +67,7 @@ namespace windows
             {
                 using (FileStream fstream = new FileStream(_path, FileMode.OpenOrCreate))
                 {
-                    fstream.Write(Encoding.Unicode.GetBytes(textArea.Text), 0, Encoding.Unicode.GetBytes(textArea.Text).Length);
+                    fstream.Write(encoding.GetBytes(textArea.Text), 0, encoding.GetBytes(textArea.Text).Length);
                     fstream.Close();
                 }
             }
@@ -95,6 +96,35 @@ namespace windows
         {
             _path = "Null";
             textArea.Text = "";
+        }
+
+        private void encoding_selector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (encoding_selector.Text)
+            {
+                case "UTF8":
+                    encoding = Encoding.UTF8;
+                    break;
+                case "Unicode":
+                    encoding = Encoding.Unicode;
+                    break;
+                case "ASCII":
+                    encoding = Encoding.ASCII;
+                    break;
+                case "UTF7":
+                    encoding = Encoding.UTF7;
+                    break;
+                case "UTF32":
+                    encoding = Encoding.UTF32;
+                    break;
+                case "BigEndianUnicode":
+                    encoding = Encoding.BigEndianUnicode;
+                    break;
+            }
+            if (_path != "Null")
+            {
+                textArea.Text = File.ReadAllText(_path, encoding);
+            }
         }
     }
 }

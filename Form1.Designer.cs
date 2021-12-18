@@ -32,6 +32,7 @@ namespace windows
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.new_file = new System.Windows.Forms.ToolStripMenuItem();
             this.open_file = new System.Windows.Forms.ToolStripMenuItem();
             this.save = new System.Windows.Forms.ToolStripMenuItem();
             this.save_as = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +40,7 @@ namespace windows
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textArea = new System.Windows.Forms.RichTextBox();
-            this.new_file = new System.Windows.Forms.ToolStripMenuItem();
+            this.encoding_selector = new System.Windows.Forms.ToolStripComboBox();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.user_icon)).BeginInit();
@@ -59,10 +60,11 @@ namespace windows
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.encoding_selector});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(300, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(300, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -74,8 +76,15 @@ namespace windows
             this.save,
             this.save_as});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 23);
             this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // new_file
+            // 
+            this.new_file.Name = "new_file";
+            this.new_file.Size = new System.Drawing.Size(180, 22);
+            this.new_file.Text = "Создать";
+            this.new_file.Click += new System.EventHandler(this.new_file_Click);
             // 
             // open_file
             // 
@@ -143,12 +152,19 @@ namespace windows
             this.textArea.TabIndex = 0;
             this.textArea.Text = "";
             // 
-            // new_file
+            // encoding_selector
             // 
-            this.new_file.Name = "new_file";
-            this.new_file.Size = new System.Drawing.Size(180, 22);
-            this.new_file.Text = "Создать";
-            this.new_file.Click += new System.EventHandler(this.new_file_Click);
+            this.encoding_selector.Items.AddRange(new object[] {
+            "UTF8",
+            "Unicode",
+            "ASCII",
+            "UTF7",
+            "UTF32",
+            "BigEndianUnicode"});
+            this.encoding_selector.Name = "encoding_selector";
+            this.encoding_selector.Size = new System.Drawing.Size(121, 23);
+            this.encoding_selector.Text = "UTF8";
+            this.encoding_selector.SelectedIndexChanged += new System.EventHandler(this.encoding_selector_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -189,6 +205,7 @@ namespace windows
         private System.Windows.Forms.ToolStripMenuItem save;
         private System.Windows.Forms.ToolStripMenuItem save_as;
         private System.Windows.Forms.ToolStripMenuItem new_file;
+        private System.Windows.Forms.ToolStripComboBox encoding_selector;
     }
 }
 
