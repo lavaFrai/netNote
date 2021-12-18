@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace windows
@@ -24,6 +22,15 @@ namespace windows
         private void Form1_Load(object sender, EventArgs e)
         {
             update_title();
+            for (int i = 0; i < 1000; i++)
+            {
+                TextBox tempTextBox = new TextBox();
+                tempTextBox.Location = new Point(10, 10+24*i);
+                tempTextBox.Text = i.ToString();
+                this.panel_list.Controls.Add(tempTextBox);
+
+                tempTextBox.Text = (i+100).ToString();
+            }
         }
 
         private void user_icon_Click(object sender, EventArgs e)
@@ -137,7 +144,7 @@ namespace windows
 
         private void update_title()
         {
-            this.Text = "netNote | " + _path;
+            this.Text = "netNote  |  " + _path;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace windows
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_list = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.new_file = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,24 +41,27 @@ namespace windows
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textArea = new System.Windows.Forms.RichTextBox();
-            this.panel1.SuspendLayout();
+            this.menu_panel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.user_icon)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.menu_panel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // panel_list
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel1.Controls.Add(this.menuStrip1);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 570);
-            this.panel1.TabIndex = 0;
+            this.panel_list.AutoScroll = true;
+            this.panel_list.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel_list.Location = new System.Drawing.Point(1, 27);
+            this.panel_list.Name = "panel_list";
+            this.panel_list.Size = new System.Drawing.Size(300, 534);
+            this.panel_list.TabIndex = 0;
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AllowItemReorder = true;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
             this.encoding_selector});
@@ -137,6 +140,7 @@ namespace windows
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel2.Controls.Add(this.user_icon);
             this.panel2.Location = new System.Drawing.Point(300, 0);
             this.panel2.Name = "panel2";
@@ -166,15 +170,25 @@ namespace windows
             this.textArea.TabIndex = 0;
             this.textArea.Text = "";
             // 
+            // menu_panel
+            // 
+            this.menu_panel.Controls.Add(this.menuStrip1);
+            this.menu_panel.Location = new System.Drawing.Point(0, 0);
+            this.menu_panel.Name = "menu_panel";
+            this.menu_panel.Size = new System.Drawing.Size(300, 27);
+            this.menu_panel.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.menu_panel);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_list);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.ForeColor = System.Drawing.SystemColors.Desktop;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -182,20 +196,20 @@ namespace windows
             this.ShowIcon = false;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.user_icon)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.menu_panel.ResumeLayout(false);
+            this.menu_panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_list;
         private System.Windows.Forms.PictureBox user_icon;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
@@ -207,6 +221,7 @@ namespace windows
         private System.Windows.Forms.ToolStripMenuItem save_as;
         private System.Windows.Forms.ToolStripMenuItem new_file;
         private System.Windows.Forms.ToolStripComboBox encoding_selector;
+        private System.Windows.Forms.Panel menu_panel;
     }
 }
 
