@@ -13,12 +13,17 @@ namespace windows
 {
     public partial class Form1 : Form
     {
-        private string _path = "Null";
+        private string _path = "Новый документ";
         Encoding encoding = Encoding.UTF8;
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            update_title();
         }
 
         private void user_icon_Click(object sender, EventArgs e)
@@ -51,6 +56,7 @@ namespace windows
                 {
                     path = openFileDialog.FileName;
                     _path = path;
+                    update_title();
                     fileContent = File.ReadAllText(_path, encoding);
                     textArea.Text = fileContent;
                 }
@@ -59,7 +65,7 @@ namespace windows
 
         private void save_Click(object sender, EventArgs e)
         {
-            if (_path == "Null")
+            if (_path == "Новый документ")
             {
                 save_as_Click(sender, e);
             }
@@ -87,6 +93,7 @@ namespace windows
                 {
                     path = saveFileDialog.FileName;
                     _path = path;
+                    update_title();
                     save_Click(sender, e);
                 }
             }
@@ -94,7 +101,8 @@ namespace windows
 
         private void new_file_Click(object sender, EventArgs e)
         {
-            _path = "Null";
+            _path = "Новый документ";
+            update_title();
             textArea.Text = "";
         }
 
@@ -121,10 +129,15 @@ namespace windows
                     encoding = Encoding.BigEndianUnicode;
                     break;
             }
-            if (_path != "Null")
+            if (_path != "Новый документ")
             {
                 textArea.Text = File.ReadAllText(_path, encoding);
             }
+        }
+
+        private void update_title()
+        {
+            this.Text = "netNote | " + _path;
         }
     }
 }

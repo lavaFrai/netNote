@@ -36,11 +36,11 @@ namespace windows
             this.open_file = new System.Windows.Forms.ToolStripMenuItem();
             this.save = new System.Windows.Forms.ToolStripMenuItem();
             this.save_as = new System.Windows.Forms.ToolStripMenuItem();
+            this.encoding_selector = new System.Windows.Forms.ToolStripComboBox();
             this.user_icon = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textArea = new System.Windows.Forms.RichTextBox();
-            this.encoding_selector = new System.Windows.Forms.ToolStripComboBox();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.user_icon)).BeginInit();
@@ -82,30 +82,44 @@ namespace windows
             // new_file
             // 
             this.new_file.Name = "new_file";
-            this.new_file.Size = new System.Drawing.Size(180, 22);
+            this.new_file.Size = new System.Drawing.Size(163, 22);
             this.new_file.Text = "Создать";
             this.new_file.Click += new System.EventHandler(this.new_file_Click);
             // 
             // open_file
             // 
             this.open_file.Name = "open_file";
-            this.open_file.Size = new System.Drawing.Size(180, 22);
+            this.open_file.Size = new System.Drawing.Size(163, 22);
             this.open_file.Text = "Открыть";
             this.open_file.Click += new System.EventHandler(this.open_file_Click);
             // 
             // save
             // 
             this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(180, 22);
+            this.save.Size = new System.Drawing.Size(163, 22);
             this.save.Text = "Сохранить";
             this.save.Click += new System.EventHandler(this.save_Click);
             // 
             // save_as
             // 
             this.save_as.Name = "save_as";
-            this.save_as.Size = new System.Drawing.Size(180, 22);
+            this.save_as.Size = new System.Drawing.Size(163, 22);
             this.save_as.Text = "Сохранить как...";
             this.save_as.Click += new System.EventHandler(this.save_as_Click);
+            // 
+            // encoding_selector
+            // 
+            this.encoding_selector.Items.AddRange(new object[] {
+            "UTF8",
+            "Unicode",
+            "ASCII",
+            "UTF7",
+            "UTF32",
+            "BigEndianUnicode"});
+            this.encoding_selector.Name = "encoding_selector";
+            this.encoding_selector.Size = new System.Drawing.Size(121, 23);
+            this.encoding_selector.Text = "UTF8";
+            this.encoding_selector.SelectedIndexChanged += new System.EventHandler(this.encoding_selector_SelectedIndexChanged);
             // 
             // user_icon
             // 
@@ -152,20 +166,6 @@ namespace windows
             this.textArea.TabIndex = 0;
             this.textArea.Text = "";
             // 
-            // encoding_selector
-            // 
-            this.encoding_selector.Items.AddRange(new object[] {
-            "UTF8",
-            "Unicode",
-            "ASCII",
-            "UTF7",
-            "UTF32",
-            "BigEndianUnicode"});
-            this.encoding_selector.Name = "encoding_selector";
-            this.encoding_selector.Size = new System.Drawing.Size(121, 23);
-            this.encoding_selector.Text = "UTF8";
-            this.encoding_selector.SelectedIndexChanged += new System.EventHandler(this.encoding_selector_SelectedIndexChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,6 +181,7 @@ namespace windows
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
